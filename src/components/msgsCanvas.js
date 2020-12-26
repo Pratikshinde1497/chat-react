@@ -1,9 +1,14 @@
 import React from 'react'
+import Msg from './msg'
 
-export default function MsgsCanvas() {
+export default function MsgsCanvas(props) {
   return (
-    <div className="position-relative" style={{height: "50%", top:"0", background: "lightblue"}}>
-      
+    <div style={{ background: "lightblue"}}>
+      {
+        props.list.map(msg=> 
+          <Msg msg={msg} key={msg.id}/>
+      )
+      }
     </div>
   )
 }
