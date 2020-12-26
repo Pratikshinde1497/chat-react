@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import ChatInput from './components/input';
+import MsgsCanvas from './components/msgsCanvas';
 
 function App() {
+
+  const list = [
+    {
+      text: "hi, how are you",
+      time: "11.00",
+      position: "left"
+    },
+    {
+      text: "i am fine",
+      time: "11.05",
+      position: "right"
+    }
+  ]
+
+  const addToMsgCanavas = (text) => {
+    const newMsg = {
+      text,
+      time: Date.now(),
+      position: "right"
+    }
+
+    list.push(newMsg);
+    console.log(list);
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MsgsCanvas/>
+      <ChatInput addToMsgCanavas={addToMsgCanavas} />
     </div>
   );
 }
